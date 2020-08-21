@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+        />
+
+        <title>하이틴 캐릭터 테스트</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f3f871062191719"></script>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light nav-distance">
+            <a class="navbar-brand" href="#">하이틴 캐릭터 닮은 꼴 테스트</a>
+            <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link">제작도움: 유튜브 조코딩 채널</a>
+            <!-- <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+                            >Disabled</a
+                        >
+                    </li>
+                </ul>
+            </div> -->
+        </nav>
+
+        <section class="section">
+            <h1 class="title">내가 하이틴 영화 캐릭터라면?</h1>
+            <h2 class="subtitle">업로드한 사진은 서버에 저장되지 않으니 안심하셔도 됩니다:-)</h2>
+        </section>
+        <!-- <section class="youtube">
+            <div class="youtube-cover">
+                <a href="" class="youtube-link">제작도움: 유튜브 조코딩 채널</a>
+            </div>
+        </section> -->
+        <!-- <div class="title">
+            <div>내가 하이틴 영화 주인공이라면?</div>
+        </div> -->
+        <!-- <button type="button" onclick="init()">Start</button> -->
+        <!-- <button type="button" onclick="predict()">예측</button> -->
+
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+
+        <!-- brunbook section-->
+        <div class="burnbook">
+            <!--burnbook image-->
+            <img src="burnbook.png" width="100%" height="100%" />
+        </div>
+        <!--imgae upload-->
+        <div class="file-upload">
+            <div class="image-upload-wrap">
+                <input
+                    class="file-upload-input"
+                    type="file"
+                    onchange="readURL(this);"
+                    accept="image/*"
+                />
+                <div class="drag-text">
+                    <h3 style="font-size: 0.7em;">클릭 또는 드래그하여 얼굴 사진 업로드</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <img class="file-upload-image" id="face_img" src="#" alt="your image" />
+                <img src="#" id="character-image" class="character-image">
+                <p class="resultmessage"></p>
+                <!-- <div id="label-container"></div> -->
+            
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">
+                        Try Again <!--<span class="image-title">Uploaded Image</span>-->
+                    </button>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox_v2zs"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="webcam-container"></div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.image-upload-wrap').hide();
+
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+                        $('.character-image').hide();
+                        $('.image-title-wrap').hide();
+
+                        // $('.image-title').html(input.files[0].name);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                    $('.resultmessage').html('Waiting for Result...');
+                    init().then(() => {
+                        console.log('hello');
+                        predict();
+                    });
+                } else {
+                    removeUpload();
+                }
+            }
+
+            function removeUpload() {
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+                $('.resultmessage').html(null);
+            }
+            $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+        </script>
+        
+        <script type="text/javascript">
+            // More API functions here:
+            // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+            // the link to your model provided by Teachable Machine export panel
+            const URL = 'https://teachablemachine.withgoogle.com/models/V3Qdl9oeQ/';
+
+            let model, webcam, labelContainer, maxPredictions;
+
+            // Load the image model and setup the webcam
+            async function init() {
+                const modelURL = URL + 'model.json';
+                const metadataURL = URL + 'metadata.json';
+
+                // load the model and metadata
+                // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+                // or files from your local hard drive
+                // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+
+                // labelContainer = document.getElementById('label-container');
+                // for (let i = 0; i < maxPredictions; i++) {
+                //     // and class labels
+                //     labelContainer.appendChild(document.createElement('div'));
+                // }
+            }
+
+            // run the webcam image through the image model
+            async function predict() {
+                // predict can take in an image, video or canvas html element
+                var image = document.getElementById('face_img');
+                const prediction = await model.predict(image, false);
+                prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+                console.log(prediction[0].className);
+                console.log(prediction);
+                var original_image = document.getElementById('character-image');
+                var changed_image;
+                var resultmessage;
+                switch (prediction[0].className) {
+                    case 'jenna':
+                        //https://blog.naver.com/yhy4043/221719903107
+                        resultmessage = 'Jenna from 13 going on 30';
+                        changed_image = "img/jenna.jpeg"
+                        break;
+                    case 'kat':
+                        //https://blog.naver.com/happy13311/220604474113
+                        resultmessage = 'Kat from 10 thing I hate about you';
+                        changed_image = "/img/kat.jpeg"
+                        break;
+                    case 'bianca':
+                        // code block
+                        //https://blog.naver.com/lccthebox4/221389779448
+                        resultmessage = 'Bianca from 10 thing I hate about you';
+                        changed_image = "/img/bianca.jpeg"
+                        break;
+                    case 'mia':
+                        // code block
+                        //https://blog.naver.com/yjmj1992/50158809414
+                        resultmessage = 'Mia from Princess Diaries';
+                        changed_image = "img/mia.jpeg"
+                        break;
+                    case 'karen':
+                        // code block
+                        //https://blog.naver.com/sky8710206/130149797403
+                        resultmessage = 'Karen from Mean Girls';
+                        changed_image = "img/karen.jpeg"
+                        break;
+                    case 'gen':
+                        // code block
+                        //https://blog.naver.com/rainsip/221810730587
+                        resultmessage = 'Gen from To All The Boys I Loved Before';
+                        changed_image = "img/gen.jpeg"
+                        break;
+                    case 'janis':
+                        // code block
+                        //https://blog.naver.com/jinbengi87/221334631510
+                        resultmessage = 'Janis from Mean Girls';
+                        changed_image = "img/janis.jpeg"
+                        break;
+                    case 'sam':
+                        // code block
+                        //https://blog.naver.com/jeyoung0308/221983376520
+                        resultmessage = 'Sam from The Perks Of Being A Wallflower';
+                        changed_image = "img/sam.jpeg"
+                        break;
+                    case 'regina':
+                        // code block
+                        // https://www.elitedaily.com/entertainment/film/regina-george-quotes-mean-girls/1846282
+                        resultmessage = 'Regina from Mean Girls';
+                        changed_image = 'img/regina.jpeg';
+                        break;
+                    case 'cher':
+                        // code block
+                        //https://blog.naver.com/danmuzykim/221730644969
+                        resultmessage = 'Cher from Clueless';
+                        changed_image = "img/cher.jpeg"
+                        break;
+                    case 'lara':
+                        // code block
+                        //https://blog.naver.com/shysung28/221811017775
+                        resultmessage = 'Lara from To All The Boys I Loved Before';
+                        changed_image = "img/lara.jpeg"
+                        break;
+                    case 'cady':
+                        // code block
+                        //https://cafe.naver.com/ak3333/342475
+                        resultmessage = 'Cady from Mean Girls';
+                        changed_image = "img/cady.jpeg"
+                        break;
+                    case 'elle':
+                        // code block
+                        //https://blog.naver.com/punky85/221916630282
+                        resultmessage = 'Elle from The Kissing Booth';
+                        changed_image = "img/elle.jpeg"
+                        break;
+                    default:
+                        // code block
+                        resultmessage = 'none';
+                        changed_image = "none";
+                        
+                }
+                $('.resultmessage').html(resultmessage);
+                original_image.src = changed_image;
+                $('.character-image').show();
+                $('.image-title-wrap').show();
+                //print percentage
+                for (let i = 0; i < maxPredictions; i++) {
+                    const classPrediction =
+                        prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
+                    //labelContainer.childNodes[i].innerHTML = classPrediction;
+                }
+            }
+        </script>
+    </body>
+    <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ -->
+</html>
