@@ -211,6 +211,5 @@ body {
 .add-banner{
     position:relative;
     width:320px;
-    margin: 0 auto;
-    margin-top:90%;
+    margin-top:30%;
 }
