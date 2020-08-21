@@ -209,7 +209,7 @@ body {
 }
 
 .add-banner{
-    position:relative;
+    position:absolute;
     width:320px;
-    margin-top:30%;
+    bottom:0;
 }
