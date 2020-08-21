@@ -17,14 +17,18 @@
         <link rel="stylesheet" href="style.css" />
 
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f3f871062191719"></script>
-
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f3f871062191719"
+        ></script>
     </head>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light nav-distance">
             <a class="navbar-brand" href="#">하이틴 캐릭터 닮은 꼴 테스트</a>
-            <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link">제작도움: 유튜브 조코딩 채널</a>
+            <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link"
+                >제작도움: 유튜브 조코딩 채널</a
+            >
             <!-- <button
                 class="navbar-toggler"
                 type="button"
@@ -96,16 +100,17 @@
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face_img" src="#" alt="your image" />
-                <img src="#" id="character-image" class="character-image">
+                <img src="#" id="character-image" class="character-image" />
                 <p class="resultmessage"></p>
                 <!-- <div id="label-container"></div> -->
-            
+
                 <div class="image-title-wrap">
                     <button type="button" onclick="removeUpload()" class="remove-image">
-                        Try Again <!--<span class="image-title">Uploaded Image</span>-->
+                        Try Again
+                        <!--<span class="image-title">Uploaded Image</span>-->
                     </button>
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_inline_share_toolbox_v2zs"></div>
+                    <div class="addthis_inline_share_toolbox_v2zs"></div>
                 </div>
             </div>
         </div>
@@ -171,7 +176,7 @@
                 $('.image-upload-wrap').removeClass('image-dropping');
             });
         </script>
-        
+
         <script type="text/javascript">
             // More API functions here:
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -215,48 +220,48 @@
                     case 'jenna':
                         //https://blog.naver.com/yhy4043/221719903107
                         resultmessage = 'Jenna from 13 going on 30';
-                        changed_image = "img/jenna.jpeg"
+                        changed_image = 'img/jenna.jpeg';
                         break;
                     case 'kat':
                         //https://blog.naver.com/happy13311/220604474113
                         resultmessage = 'Kat from 10 thing I hate about you';
-                        changed_image = "/img/kat.jpeg"
+                        changed_image = '/img/kat.jpeg';
                         break;
                     case 'bianca':
                         // code block
                         //https://blog.naver.com/lccthebox4/221389779448
                         resultmessage = 'Bianca from 10 thing I hate about you';
-                        changed_image = "/img/bianca.jpeg"
+                        changed_image = '/img/bianca.jpeg';
                         break;
                     case 'mia':
                         // code block
                         //https://blog.naver.com/yjmj1992/50158809414
                         resultmessage = 'Mia from Princess Diaries';
-                        changed_image = "img/mia.jpeg"
+                        changed_image = 'img/mia.jpeg';
                         break;
                     case 'karen':
                         // code block
                         //https://blog.naver.com/sky8710206/130149797403
                         resultmessage = 'Karen from Mean Girls';
-                        changed_image = "img/karen.jpeg"
+                        changed_image = 'img/karen.jpeg';
                         break;
                     case 'gen':
                         // code block
                         //https://blog.naver.com/rainsip/221810730587
                         resultmessage = 'Gen from To All The Boys I Loved Before';
-                        changed_image = "img/gen.jpeg"
+                        changed_image = 'img/gen.jpeg';
                         break;
                     case 'janis':
                         // code block
                         //https://blog.naver.com/jinbengi87/221334631510
                         resultmessage = 'Janis from Mean Girls';
-                        changed_image = "img/janis.jpeg"
+                        changed_image = 'img/janis.jpeg';
                         break;
                     case 'sam':
                         // code block
                         //https://blog.naver.com/jeyoung0308/221983376520
                         resultmessage = 'Sam from The Perks Of Being A Wallflower';
-                        changed_image = "img/sam.jpeg"
+                        changed_image = 'img/sam.jpeg';
                         break;
                     case 'regina':
                         // code block
@@ -268,31 +273,30 @@
                         // code block
                         //https://blog.naver.com/danmuzykim/221730644969
                         resultmessage = 'Cher from Clueless';
-                        changed_image = "img/cher.jpeg"
+                        changed_image = 'img/cher.jpeg';
                         break;
                     case 'lara':
                         // code block
                         //https://blog.naver.com/shysung28/221811017775
                         resultmessage = 'Lara from To All The Boys I Loved Before';
-                        changed_image = "img/lara.jpeg"
+                        changed_image = 'img/lara.jpeg';
                         break;
                     case 'cady':
                         // code block
                         //https://cafe.naver.com/ak3333/342475
                         resultmessage = 'Cady from Mean Girls';
-                        changed_image = "img/cady.jpeg"
+                        changed_image = 'img/cady.jpeg';
                         break;
                     case 'elle':
                         // code block
                         //https://blog.naver.com/punky85/221916630282
                         resultmessage = 'Elle from The Kissing Booth';
-                        changed_image = "img/elle.jpeg"
+                        changed_image = 'img/elle.jpeg';
                         break;
                     default:
                         // code block
                         resultmessage = 'none';
-                        changed_image = "none";
-                        
+                        changed_image = 'none';
                 }
                 $('.resultmessage').html(resultmessage);
                 original_image.src = changed_image;
@@ -308,11 +312,16 @@
         </script>
     </body>
     <footer>
-    <ins class="kakao_ad_area" style="display:none;" 
- data-ad-unit    = "DAN-u85o6nfjp4qg" 
- data-ad-width   = "320" 
- data-ad-height  = "100"></ins> 
-<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        <div class="add-banner">
+        <ins
+            class="kakao_ad_area"
+            style="display: none;"
+            data-ad-unit="DAN-u85o6nfjp4qg"
+            data-ad-width="320"
+            data-ad-height="100"
+        ></ins>
+        </div>
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     </footer>
     <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
 
